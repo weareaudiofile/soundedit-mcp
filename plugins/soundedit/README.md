@@ -6,11 +6,11 @@ Let Claude Code work in [SoundEdit](https://audiofile.engineering/soundedit), an
 
 ## What it runs and where it connects
 
-The plugin runs no code of its own. It connects Claude Code to the address in its **SoundEdit address** option, which is `http://127.0.0.1:38411/mcp` unless you changed the port in SoundEdit ▸ Settings ▸ Agent: SoundEdit itself, on your own Mac. It sends the token from its **SoundEdit token** option in the `Authorization` header, and nothing else, anywhere else. Claude Code keeps the token in your system's secure storage.
+The plugin runs one small Node.js script, `server/index.js`, the same bridge the SoundEdit extension for Claude Desktop runs. It uses only Node's own modules. It passes each message between Claude Code and SoundEdit at 127.0.0.1, on the port in its **SoundEdit port** option (38411 unless you changed it in SoundEdit ▸ Settings ▸ Agent), with the token from its **SoundEdit token** option in the `Authorization` header. When SoundEdit isn't running, it opens it with no window (`open -g -b engineering.audiofile.soundedit-macos --args -agent.headless YES`) and tries again for up to 45 seconds. It sends nothing anywhere else. Claude Code keeps the token in your system's secure storage.
 
 ## What you need
 
-SoundEdit for Mac 1.1 or later, with Settings ▸ Agent ▸ **Let an agent drive SoundEdit** turned on. The same page shows your token; paste it when Claude Code asks for it. The Library, recipe, kit and file tools are SoundEdit Pro's, and work during its free trial.
+Node.js on your `PATH` for the bridge. SoundEdit for Mac 1.1 or later, with Settings ▸ Agent ▸ **Let an agent drive SoundEdit** turned on. The same page shows your token; paste it when Claude Code asks for it. The Library, recipe, kit and file tools are SoundEdit Pro's, and work during its free trial.
 
 ## Install
 
@@ -20,7 +20,7 @@ In Claude Code:
 /plugin install soundedit --marketplace weareaudiofile/soundedit-mcp
 ```
 
-Claude Code asks for SoundEdit's address (keep `http://127.0.0.1:38411/mcp` unless you changed the port) and the token from SoundEdit's Settings ▸ Agent.
+Claude Code asks for the token from SoundEdit's Settings ▸ Agent, and for SoundEdit's port (keep 38411 unless you changed it there).
 
 ## Things to ask
 

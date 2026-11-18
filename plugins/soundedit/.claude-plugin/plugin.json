@@ -1,7 +1,7 @@
 {
   "name": "soundedit",
   "displayName": "SoundEdit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Edit the sound open in SoundEdit, an audio editor and sample manager for Mac, while you watch and listen; with SoundEdit Pro, a whole folder of samples.",
   "author": {
     "name": "Audiofile Engineering",
@@ -23,19 +23,20 @@
   "supportUrl": "https://audiofile.engineering/support",
   "privacyPolicyUrl": "https://audiofile.engineering/privacy",
   "userConfig": {
-    "url": {
-      "type": "string",
-      "title": "SoundEdit address",
-      "description": "The address in SoundEdit ▸ Settings ▸ Agent. Leave it unless you changed the port there.",
-      "default": "http://127.0.0.1:38411/mcp",
-      "required": true
-    },
     "token": {
       "type": "string",
       "title": "SoundEdit token",
       "description": "The token from SoundEdit ▸ Settings ▸ Agent. A new token there turns this one away.",
       "sensitive": true,
       "required": true
+    },
+    "port": {
+      "type": "number",
+      "title": "SoundEdit port",
+      "description": "The port in SoundEdit ▸ Settings ▸ Agent. Leave it unless you changed it there.",
+      "default": 38411,
+      "min": 1024,
+      "max": 49151
     }
   }
 }

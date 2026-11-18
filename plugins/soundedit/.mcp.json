@@ -1,10 +1,16 @@
 {
   "mcpServers": {
     "soundedit": {
-      "type": "http",
-      "url": "${user_config.url}",
-      "headers": {
-        "Authorization": "Bearer ${user_config.token}"
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/index.js"
+      ],
+      "env": {
+        "AGENT_APP_NAME": "SoundEdit",
+        "AGENT_PORT": "${user_config.port}",
+        "AGENT_TOKEN": "${user_config.token}",
+        "AGENT_BUNDLE_ID": "engineering.audiofile.soundedit-macos",
+        "AGENT_LAUNCH_ARGS": "[\"-agent.headless\",\"YES\"]"
       }
     }
   }

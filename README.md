@@ -35,7 +35,7 @@ When SoundEdit isn't running, the extension opens it with no window.
 
 ### Claude Code
 
-Add this repository as a plugin marketplace and install the plugin. Claude Code asks for two settings: SoundEdit's address (keep `http://127.0.0.1:38411/mcp` unless you changed the port) and the token from SoundEdit's Settings ▸ Agent:
+Add this repository as a plugin marketplace and install the plugin. Claude Code asks for the token from SoundEdit's Settings ▸ Agent and for SoundEdit's port (keep 38411 unless you changed it there). The plugin runs the same bridge as the Claude extension, so it needs Node.js on your `PATH`:
 
 ```text
 /plugin install soundedit --marketplace weareaudiofile/soundedit-mcp
@@ -125,7 +125,7 @@ With SoundEdit Pro:
 
 ## What's in this repository
 
-- `plugins/soundedit/`: the Claude Code plugin. It runs no code of its own: it connects Claude Code to SoundEdit at the address in its settings (`http://127.0.0.1:38411/mcp` unless you changed the port), with your token in the `Authorization` header.
+- `plugins/soundedit/`: the Claude Code plugin. It runs its own copy of `server/index.js` (below) with Node.js, with SoundEdit's port and your token from its settings.
 - `server/index.js`: the script inside `SoundEdit.mcpb`, which Claude runs with its own Node. It hands each message to SoundEdit at 127.0.0.1 with your token and writes back SoundEdit's answer. When nothing answers, it opens SoundEdit with no window (`open -g -b engineering.audiofile.soundedit-macos --args -agent.headless YES`) and tries again for up to 45 seconds. It uses only Node's own modules.
 - `server.json`: SoundEdit's entry in the official MCP Registry.
 - `glama/`, `Dockerfile` and `glama.json`: for Glama's automated build check only. SoundEdit's server is part of the SoundEdit app, so Glama's Linux build machine runs `server/index.js` against a stand-in that lists SoundEdit's real tools (`glama/tools.json`, read from SoundEdit itself) and answers every call with a note to install SoundEdit. People never run these files.
