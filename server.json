@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "engineering.audiofile/soundedit",
+  "title": "SoundEdit",
+  "description": "Edit audio and work through sample folders in SoundEdit for Mac while you watch and listen.",
+  "version": "1.0.0",
+  "websiteUrl": "https://audiofile.engineering/soundedit",
+  "repository": {
+    "url": "https://github.com/weareaudiofile/soundedit-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/weareaudiofile/soundedit-mcp/v1.0.0/assets/soundedit-icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/weareaudiofile/soundedit-mcp/releases/download/v1.0.0/SoundEdit.mcpb",
+      "fileSha256": "1aa25fc7c2dec69bd3e907a109127971e5da2567b3a3a0cca604a73f22c8e6f9",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

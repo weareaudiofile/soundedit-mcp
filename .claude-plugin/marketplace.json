@@ -1,0 +1,15 @@
+{
+  "name": "soundedit-mcp",
+  "description": "SoundEdit's plugin for Claude Code: edit audio and work through sample folders in SoundEdit for Mac.",
+  "owner": {
+    "name": "Audiofile Engineering",
+    "url": "https://audiofile.engineering"
+  },
+  "plugins": [
+    {
+      "name": "soundedit",
+      "source": "./plugins/soundedit",
+      "description": "Edit the sound open in SoundEdit while you watch and listen; with SoundEdit Pro, a whole folder of samples."
+    }
+  ]
+}
