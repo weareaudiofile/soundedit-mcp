@@ -128,6 +128,7 @@ With SoundEdit Pro:
 - `plugins/soundedit/`: the Claude Code plugin. It runs its own copy of `server/index.js` (below) with Node.js, with SoundEdit's port and your token from its settings.
 - `server/index.js`: the script inside `SoundEdit.mcpb`, which Claude runs with its own Node. It hands each message to SoundEdit at 127.0.0.1 with your token and writes back SoundEdit's answer. When nothing answers, it opens SoundEdit with no window (`open -g -b engineering.audiofile.soundedit-macos --args -agent.headless YES`) and tries again for up to 45 seconds. It uses only Node's own modules.
 - `server.json`: SoundEdit's entry in the official MCP Registry.
+- `tools/publish_listing.py` and `tools/listing.json`: how SoundEdit's own CI keeps this repository, its releases and its registry entry equal to what SoundEdit serves. When a SoundEdit release changes its tools, the script writes them here from SoundEdit itself, releases the new `SoundEdit.mcpb` and publishes the new version to the registry. People never run it.
 - `glama/`, `Dockerfile` and `glama.json`: for Glama's automated build check only. SoundEdit's server is part of the SoundEdit app, so Glama's Linux build machine runs `server/index.js` against a stand-in that lists SoundEdit's real tools (`glama/tools.json`, read from SoundEdit itself) and answers every call with a note to install SoundEdit. People never run these files.
 
 ## Privacy and security

@@ -1,0 +1,38 @@
+{
+  "app": "SoundEdit",
+  "needs": "SoundEdit for Mac 1.1 or later",
+  "repository": "weareaudiofile/soundedit-mcp",
+  "registry": {
+    "name": "engineering.audiofile/soundedit",
+    "domain": "audiofile.engineering"
+  },
+  "extension": "SoundEdit.mcpb",
+  "bridges": [
+    "server/index.js",
+    "plugins/soundedit/server/index.js"
+  ],
+  "icon": "assets/soundedit-icon-1024.png",
+  "iconSizes": {
+    "assets/soundedit-icon-512.png": 512,
+    "assets/soundedit-icon-400.png": 400,
+    "plugins/soundedit/assets/soundedit-icon-512.png": 512
+  },
+  "registryIcons": {
+    "assets/soundedit-icon-1024.png": 1024,
+    "assets/soundedit-icon-512.png": 512
+  },
+  "plugin": "plugins/soundedit/.claude-plugin/plugin.json",
+  "toolsTable": {
+    "file": "README.md",
+    "mode": "check"
+  },
+  "prose": [
+    "README.md",
+    "plugins/soundedit/README.md",
+    "plugins/soundedit/skills/soundedit/SKILL.md"
+  ],
+  "committer": {
+    "name": "Patrick Krekelberg",
+    "email": "1598712+crayfellow@users.noreply.github.com"
+  }
+}
