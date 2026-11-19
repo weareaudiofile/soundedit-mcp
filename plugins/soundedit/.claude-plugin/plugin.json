@@ -1,7 +1,7 @@
 {
   "name": "soundedit",
   "displayName": "SoundEdit",
-  "version": "1.0.1",
+  "version": "1.2.2",
   "description": "Edit the sound open in SoundEdit, an audio editor and sample manager for Mac, while you watch and listen; with SoundEdit Pro, a whole folder of samples.",
   "author": {
     "name": "Audiofile Engineering",

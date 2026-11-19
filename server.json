@@ -3,7 +3,7 @@
   "name": "engineering.audiofile/soundedit",
   "title": "SoundEdit",
   "description": "Edit audio and work through sample folders in SoundEdit for Mac while you watch and listen.",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "websiteUrl": "https://audiofile.engineering/soundedit",
   "repository": {
     "url": "https://github.com/weareaudiofile/soundedit-mcp",
@@ -11,7 +11,14 @@
   },
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/weareaudiofile/soundedit-mcp/v1.0.0/assets/soundedit-icon-512.png",
+      "src": "https://raw.githubusercontent.com/weareaudiofile/soundedit-mcp/v1.2.2/assets/soundedit-icon-1024.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "1024x1024"
+      ]
+    },
+    {
+      "src": "https://raw.githubusercontent.com/weareaudiofile/soundedit-mcp/v1.2.2/assets/soundedit-icon-512.png",
       "mimeType": "image/png",
       "sizes": [
         "512x512"
@@ -21,8 +28,8 @@
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/weareaudiofile/soundedit-mcp/releases/download/v1.0.0/SoundEdit.mcpb",
-      "fileSha256": "1aa25fc7c2dec69bd3e907a109127971e5da2567b3a3a0cca604a73f22c8e6f9",
+      "identifier": "https://github.com/weareaudiofile/soundedit-mcp/releases/download/v1.2.2/SoundEdit.mcpb",
+      "fileSha256": "2c5c5e9a8c2d5c6155747dac9ec69c93d32e444c55e67cb5951a7811666debe0",
       "transport": {
         "type": "stdio"
       }
