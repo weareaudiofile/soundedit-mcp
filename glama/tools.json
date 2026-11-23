@@ -1,8 +1,8 @@
 {
-  "_about": "SoundEdit's tool definitions, as SoundEdit 1.2.2's own MCP server lists them. Read only by glama/stand-in.js for Glama's build check.",
+  "_about": "SoundEdit's tool definitions, as SoundEdit 1.3.0's own MCP server lists them. Read only by glama/stand-in.js for Glama's build check.",
   "server": {
     "name": "SoundEdit",
-    "version": "1.2.2"
+    "version": "1.3.0"
   },
   "instructions": "SoundEdit is a sample editor the person is watching and listening to while you work; it also runs headless, with no window. Times are in seconds unless an argument names another unit. Every position read back also gives its frame at the document's sample rate, named with it: frames are zero-based, one frame across all channels, and a range's end is exclusive (a..<b holds frames a through b − 1). For an exact selection use start_frame/end_frame; a reply gives what changed in frames. Every edit lands in the file's History and can be undone (edit · edit.undo); nothing is written over the person's file. Read the state first; select a range before a range edit. The Library tools (library_*, recipe_*, deliver_*) work on a folder of sounds: open it, query it with the Library's filter words, stage a recipe and preview a row before anything is made; override a row that is wrong; then run it. A card's \"unsure\" marks a guess SoundEdit could not confirm by ear: keep it out of names, tags and INFO, tell the person which sounds it could not identify, and give their answer to library_teach. A tool that writes files goes ahead and shows in SoundEdit's band, or waits for the person's Return there if they asked SoundEdit to wait. Headless calls require prior folder access and write permission; they refuse instead of opening a panel.",
   "tools": [
@@ -75,7 +75,7 @@
         "readOnlyHint": false,
         "title": "Edit"
       },
-      "description": "Edit commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\nedit.undo — Undo\nedit.redo — Redo\nedit.cut — Cut\nedit.copy — Copy\nedit.paste — Paste\nedit.delete — Delete\nedit.trim — Trim\nedit.trimToStart — Trim to Start\nedit.trimToEnd — Trim to End\nedit.crop — Crop\nedit.insertSilence — Insert Silence (value: Length s, 0.10000000149011612 to 30, default 1)\nedit.padStart — Pad Start (Silence) (value: Length s, 0.10000000149011612 to 30, default 1)\nedit.padEnd — Pad End (Silence) (value: Length s, 0.10000000149011612 to 30, default 1)\nedit.trimSilence — Trim Silence (value: Threshold dB, -96 to -20, default -60)\nrange.slideLater — Slide Audio Later Under Selection\nrange.slideEarlier — Slide Audio Earlier Under Selection\nedit.copyToNew — Copy to New\nedit.selectAll — Select All\nedit.nudgeStartEarlier — Nudge Start Earlier\nedit.nudgeStartLater — Nudge Start Later\nedit.nudgeEndEarlier — Nudge End Earlier\nedit.nudgeEndLater — Nudge End Later\nedit.repeat — Repeat (value: Times ×, 2 to 16, default 2)\nedit.trimToPeak — Trim Beginning to Peak",
+      "description": "Edit commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\nedit.undo — Undo\nedit.redo — Redo\nedit.cut — Cut\nedit.copy — Copy\nedit.paste — Paste\nedit.delete — Delete\nedit.trim — Trim\nedit.trimToStart — Trim to Start\nedit.trimToEnd — Trim to End\nedit.crop — Crop\nedit.insertSilence — Insert Silence (value: Length s, 0.10000000149011612 to 30, default 1)\nedit.padStart — Pad Start (Silence) (value: Length s, 0.10000000149011612 to 30, default 1)\nedit.padEnd — Pad End (Silence) (value: Length s, 0.10000000149011612 to 30, default 1)\nedit.trimSilence — Trim Silence (value: Threshold dB, -96 to -20, default -60)\nrange.slideLater — Slide Audio Later Under Selection\nrange.slideEarlier — Slide Audio Earlier Under Selection\nedit.halveSelectionFromStart — Halve Selection from Start\nedit.halveSelectionFromEnd — Halve Selection from End\nedit.doubleSelectionFromStart — Double Selection from Start\nedit.doubleSelectionFromEnd — Double Selection from End\nedit.copyToNew — Copy to New\nedit.selectAll — Select All\nedit.nudgeStartEarlier — Nudge Start Earlier\nedit.nudgeStartLater — Nudge Start Later\nedit.nudgeEndEarlier — Nudge End Earlier\nedit.nudgeEndLater — Nudge End Later\nedit.repeat — Repeat (value: Times ×, 2 to 16, default 2)\nedit.trimToPeak — Trim Beginning to Peak",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -98,6 +98,10 @@
               "edit.trimSilence",
               "range.slideLater",
               "range.slideEarlier",
+              "edit.halveSelectionFromStart",
+              "edit.halveSelectionFromEnd",
+              "edit.doubleSelectionFromStart",
+              "edit.doubleSelectionFromEnd",
               "edit.copyToNew",
               "edit.selectAll",
               "edit.nudgeStartEarlier",
@@ -369,7 +373,7 @@
         "readOnlyHint": false,
         "title": "Playback"
       },
-      "description": "Playback commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\ntransport.playStop — Play/Stop\ntransport.continue — Continue\ntransport.stop — Stop\ntransport.loopSelection — Loop Selection\ntransport.selectLoopRange — Select Loop Range\ntransport.toggleLoop — Toggle Loop\ntransport.lockLoop — Lock Loop\ntransport.cycleLoopDirection — Cycle Loop Direction\ntransport.loopForward — Loop Direction: Forward\ntransport.loopReverse — Loop Direction: Reverse\ntransport.loopPingPong — Loop Direction: Ping-Pong\ntransport.setLoopDirection — Set Loop Direction (value: Direction , 0 to 2, default 0)\nfilter.keyTracking — Filter Key Tracking\nmonitor.ambisonicHeadphones — Decode Ambisonics for Headphones\ntransport.goToStart — Go to Start\ntransport.goToEnd — Go to End",
+      "description": "Playback commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\ntransport.playStop — Play/Stop\ntransport.continue — Continue\ntransport.stop — Stop\ntransport.loopSelection — Loop Selection\ntransport.selectLoopRange — Select Loop Range\ntransport.toggleLoop — Toggle Loop\ntransport.lockLoop — Lock Loop\ntransport.cycleLoopDirection — Cycle Loop Direction\ntransport.loopForward — Loop Direction: Forward\ntransport.loopReverse — Loop Direction: Reverse\ntransport.loopPingPong — Loop Direction: Ping-Pong\ntransport.setLoopDirection — Set Loop Direction (value: Direction , 0 to 2, default 0)\nfilter.keyTracking — Filter Key Tracking\nmonitor.ambisonicHeadphones — Decode Ambisonics for Headphones\ntransport.goToStart — Go to Start\ntransport.goToEnd — Go to End\npiano.octaveDown — Octave Down\npiano.octaveUp — Octave Up\ntransport.goToSelectionStart — Go to Selection Start\ntransport.goToSelectionEnd — Go to Selection End\ntransport.goToPeak — Go to Peak",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -391,7 +395,12 @@
               "filter.keyTracking",
               "monitor.ambisonicHeadphones",
               "transport.goToStart",
-              "transport.goToEnd"
+              "transport.goToEnd",
+              "piano.octaveDown",
+              "piano.octaveUp",
+              "transport.goToSelectionStart",
+              "transport.goToSelectionEnd",
+              "transport.goToPeak"
             ],
             "type": "string"
           },
@@ -416,7 +425,7 @@
         "readOnlyHint": false,
         "title": "View"
       },
-      "description": "View commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\nview.normal — Normal View\nview.follow — Follow Playhead\nview.centreLock — Center-Lock\nview.zoomIn — Zoom In\nview.zoomOut — Zoom Out\nview.zoomToSelection — Zoom to Selection\nview.zoomToFit — Show Whole File\nmeters.resetPeaks — Reset Peak Holds\nview.cyclePanel — Cycle Analysis Panel\nview.stereoLanes — Channel Lanes\nview.channelKeys — Channel Keys\nview.channelMeters — Channel Meters\nview.knobStrip — Knob Strip\nview.statistics — File Statistics\nknobs.t1 — Knobs: Sample\nknobs.t2 — Knobs: Loop\nknobs.t3 — Knobs: EQ\nknobs.t4 — Knobs: Envelopes & Filter\nknobs.t5 — Knobs: Macros\nview.slotsPanel — Slots Panel",
+      "description": "View commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\nview.normal — Normal View\nview.follow — Follow Playhead\nview.centreLock — Center-Lock\nview.zoomIn — Zoom In\nview.zoomOut — Zoom Out\nview.zoomToSelection — Zoom to Selection\nview.zoomToFit — Show Whole File\nview.zoomVerticalIn — Vertical Zoom In\nview.zoomVerticalOut — Vertical Zoom Out\nmeters.resetPeaks — Reset Peak Holds\nview.cyclePanel — Cycle Analysis Panel\nview.stereoLanes — Channel Lanes\nview.channelKeys — Channel Keys\nview.channelMeters — Channel Meters\nview.knobStrip — Knob Strip\nview.statistics — File Statistics\nknobs.t1 — Knobs: Sample\nknobs.t2 — Knobs: Loop\nknobs.t3 — Knobs: EQ\nknobs.t4 — Knobs: Envelopes & Filter\nknobs.t5 — Knobs: Macros\nview.slotsPanel — Slots Panel",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -430,6 +439,8 @@
               "view.zoomOut",
               "view.zoomToSelection",
               "view.zoomToFit",
+              "view.zoomVerticalIn",
+              "view.zoomVerticalOut",
               "meters.resetPeaks",
               "view.cyclePanel",
               "view.stereoLanes",
@@ -582,7 +593,7 @@
         "readOnlyHint": false,
         "title": "Ingredients"
       },
-      "description": "Ingredients commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\ningredient.newFromSelection — Ingredient: New from Selection\ningredient.next — Ingredient: Next\ningredient.previous — Ingredient: Previous\ningredient.toLitChannels — Ingredient: To Lit Channels\ningredient.mute — Ingredient: Mute/Unmute\ningredient.solo — Ingredient: Solo/Unsolo\ningredient.remove — Ingredient: Remove\ningredient.clear — Ingredient: Clear All\ningredient.fadesLinear — Ingredient: Fades Linear\ningredient.fadesLogarithmic — Ingredient: Fades Logarithmic\ningredient.fadesSCurve — Ingredient: Fades S-Curve\ningredient.fadesEqualPower — Ingredient: Fades Equal Power\ningredient.reduce — Ingredient: Reduce\ningredient.nudgeEarlier — Ingredient: Nudge Earlier\ningredient.nudgeLater — Ingredient: Nudge Later\ningredient.snapPrevious — Ingredient: To Previous Snap Target\ningredient.snapNext — Ingredient: To Next Snap Target\ningredient.placeAt — Ingredient: Place At (value: Position s, 0 to 36000, default 0)\ningredient.position — Ingredient: Position (value: Position %, 0 to 100, default 0)\ningredient.gain — Ingredient: Gain (value: Gain dB, -60 to 12, default 0)\ningredient.fadeIn — Ingredient: Fade In (value: Fade In s, 0 to 600, default 0)\ningredient.fadeOut — Ingredient: Fade Out (value: Fade Out s, 0 to 600, default 0)",
+      "description": "Ingredients commands on the open file, as the person's own: each lands in History and undoes with edit.undo.\ningredient.newFromSelection — Ingredient: New from Selection\ningredient.appendSelection — Ingredient: Append Selection\ningredient.crossfadePrevious — Ingredient: Crossfade With Previous (value: Crossfade s, 0 to 60, default 0.5)\ningredient.split — Ingredient: Split\ningredient.splitAtMarkersSlices — Ingredient: Split at Markers and Slices\ningredient.swapPrevious — Ingredient: Swap With Previous\ningredient.swapNext — Ingredient: Swap With Next\ningredient.removeCloseGap — Ingredient: Remove and Close Gap\ningredient.trimToSelection — Ingredient: Trim to Selection\ningredient.next — Ingredient: Next\ningredient.previous — Ingredient: Previous\ningredient.toLitChannels — Ingredient: To Lit Channels\ningredient.mute — Ingredient: Mute/Unmute\ningredient.solo — Ingredient: Solo/Unsolo\ningredient.remove — Ingredient: Remove\ningredient.clear — Ingredient: Clear All\ningredient.fadesLinear — Ingredient: Fades Linear\ningredient.fadesLogarithmic — Ingredient: Fades Logarithmic\ningredient.fadesSCurve — Ingredient: Fades S-Curve\ningredient.fadesEqualPower — Ingredient: Fades Equal Power\ningredient.reduce — Ingredient: Reduce\ningredient.nudgeEarlier — Ingredient: Nudge Earlier\ningredient.nudgeLater — Ingredient: Nudge Later\ningredient.snapPrevious — Ingredient: To Previous Snap Target\ningredient.snapNext — Ingredient: To Next Snap Target\ningredient.placeAt — Ingredient: Place At (value: Position s, 0 to 36000, default 0)\ningredient.position — Ingredient: Position (value: Position %, 0 to 100, default 0)\ningredient.gain — Ingredient: Gain (value: Gain dB, -60 to 12, default 0)\ningredient.fadeIn — Ingredient: Fade In (value: Fade In s, 0 to 600, default 0)\ningredient.fadeOut — Ingredient: Fade Out (value: Fade Out s, 0 to 600, default 0)",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -590,6 +601,14 @@
             "description": "the command's id",
             "enum": [
               "ingredient.newFromSelection",
+              "ingredient.appendSelection",
+              "ingredient.crossfadePrevious",
+              "ingredient.split",
+              "ingredient.splitAtMarkersSlices",
+              "ingredient.swapPrevious",
+              "ingredient.swapNext",
+              "ingredient.removeCloseGap",
+              "ingredient.trimToSelection",
               "ingredient.next",
               "ingredient.previous",
               "ingredient.toLitChannels",
@@ -725,10 +744,19 @@
         "readOnlyHint": true,
         "title": "Open in Library"
       },
-      "description": "Open a folder of sounds in SoundEdit's Library — every file named at once, measured as the walk goes — or open one file in the editor.",
+      "description": "Open a folder of sounds in SoundEdit's Library — every file named at once, measured as the walk goes — or several folders as one list, or one file in the editor.",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
+          "also": {
+            "description": "more folders or drives listed with path's folder as ONE list, so the copies of a sound across them show together (library_query dupes)",
+            "items": {
+              "description": "another folder; ~ is home",
+              "type": "string"
+            },
+            "maxItems": 32,
+            "type": "array"
+          },
           "path": {
             "description": "a folder to open in the Library, or a file to open in the editor; ~ is home",
             "type": "string"
@@ -1025,7 +1053,7 @@
         "readOnlyHint": false,
         "title": "Make a kit"
       },
-      "description": "Make a kit from a split session's kept takes (★ and •), beside the file, as the person's e does — any of its targets: OP-XY, OP-1, EP, WAV one-shots, AIFF one-shots, FLAC one-shots, SFZ kit, Decent Sampler kit, SoundFont kit, MPC kit, Ableton Drum Rack kit, Logic Sampler kit, WAV chain, Even WAV chain. The devices' kits (the OP-XY's preset, the OP-1's kit, the EP's slices), a folder of one-shots, a software sampler's kit, or one WAV of the takes with slice markers (an even chain in equal slots). It waits for the person's Return in the Library only if they asked SoundEdit to wait; sending it to a device stays theirs.",
+      "description": "Make a kit from a split session's kept takes (★ and •), beside the file, as the person's e does — any of its targets: OP-XY, OP-1, EP, WAV one-shots, AIFF one-shots, FLAC one-shots, Squid Salmple bank, Assimil8or preset, SFZ kit, Decent Sampler kit, SoundFont kit, MPC kit, Ableton Drum Rack kit, Logic Sampler kit, WAV chain, Even WAV chain. The devices' kits (the OP-XY's preset, the OP-1's kit, the EP's slices), a folder of one-shots, a bank for the Squid Salmple's stick, a preset for the Assimil8or's card (a pad a channel), a software sampler's kit, or one WAV of the takes with slice markers (an even chain in equal slots). It waits for the person's Return in the Library only if they asked SoundEdit to wait; sending it to a device stays theirs.",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -1034,7 +1062,7 @@
             "type": "string"
           },
           "target": {
-            "description": "what to make, as e offers it: OP-XY, OP-1, EP, WAV one-shots, AIFF one-shots, FLAC one-shots, SFZ kit, Decent Sampler kit, SoundFont kit, MPC kit, Ableton Drum Rack kit, Logic Sampler kit, WAV chain, Even WAV chain (default: the band's choice)",
+            "description": "what to make, as e offers it: OP-XY, OP-1, EP, WAV one-shots, AIFF one-shots, FLAC one-shots, Squid Salmple bank, Assimil8or preset, SFZ kit, Decent Sampler kit, SoundFont kit, MPC kit, Ableton Drum Rack kit, Logic Sampler kit, WAV chain, Even WAV chain (default: the band's choice)",
             "enum": [
               "OP-XY",
               "OP-1",
@@ -1042,6 +1070,8 @@
               "WAV one-shots",
               "AIFF one-shots",
               "FLAC one-shots",
+              "Squid Salmple bank",
+              "Assimil8or preset",
               "SFZ kit",
               "Decent Sampler kit",
               "SoundFont kit",
@@ -1116,7 +1146,7 @@
         "readOnlyHint": false,
         "title": "Make a multisample"
       },
-      "description": "Make a multisample from rows, as the person's x then e in the Library: the notes mapped by pitch, each zone's loop found, then written beside the first note as an OP-XY preset, an SFZ, a Decent Sampler preset, a SoundFont bank, or an Ableton Simpler or Instrument Rack; or on the Mac for Logic Pro's Sampler, a bank put in Logic's own library. It waits for the person's Return in the Library only if they asked SoundEdit to wait; sending it to a device stays theirs.",
+      "description": "Make a multisample from rows, as the person's x then e in the Library: the notes mapped by pitch, each zone's loop found, then written beside the first note as an OP-XY preset, an Assimil8or preset (8 zones on its CV A at 1 V/oct, 0 V = C4), an SFZ, a Decent Sampler preset, a SoundFont bank, or an Ableton Simpler or Instrument Rack; or on the Mac for Logic Pro's Sampler, a bank put in Logic's own library. It waits for the person's Return in the Library only if they asked SoundEdit to wait; sending it to a device stays theirs.",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -1133,6 +1163,7 @@
             "description": "what to make (default: the band's choice)",
             "enum": [
               "OP-XY",
+              "Assimil8or",
               "SFZ",
               "Decent Sampler",
               "SoundFont",
@@ -1262,7 +1293,7 @@
         "readOnlyHint": false,
         "title": "Library"
       },
-      "description": "The Library window's verbs, as the person's own, on the rows given (or selected): split a session, keep takes, stage clean one-shots, mix or append, hide copies, a row's tempo ×2 or ÷2, the audition's switches, the Library tempo and key, and undo. The reply is the band's line after it.\nlibrary.split — Split Session\nlibrary.star — Make This the One\nlibrary.keep — Keep Take\nlibrary.layers — Layers\nlibrary.robins — Robins\nlibrary.like — Sounds Like This\nlibrary.stage — Stage Clean One-Shots\nlibrary.mix — Mix Into One File\nlibrary.append — Append Into One File\nlibrary.removeFromList — Remove from List\nlibrary.moveUp — Move Up in Group\nlibrary.moveDown — Move Down in Group\nlibrary.hideCopies — Hide Copies\nlibrary.tempoDouble — Tempo ×2\nlibrary.tempoHalve — Tempo ÷2\nlibrary.showDuplicates — Show Duplicates\nlibrary.hearStaged — Hear Staged Result\nlibrary.flip — Flip Source and Result\nlibrary.clearStage — Clear Stage\nlibrary.editStaged — Edit Staged Recipe…\nlibrary.keepInHistory — Keep in History\nlibrary.stopRun — Stop Run\nlibrary.autoplay — Audition Autoplay\nlibrary.continue — Audition Continue\nlibrary.repeat — Audition Repeat\nlibrary.reverse — Audition Reverse\nlibrary.marker — Audition from Marker\nlibrary.lock — Audition Tempo Lock\nlibrary.keySync — Audition Key Sync\nlibrary.keyUp — Library Key Up\nlibrary.keyDown — Library Key Down\nlibrary.tempoUp — Library Tempo Up\nlibrary.tempoDown — Library Tempo Down\nlibrary.libraryTempoDouble — Library Tempo ×2\nlibrary.libraryTempoHalve — Library Tempo ÷2\nlibrary.tempoFromSelection — Library Tempo from Selection\nlibrary.level — Audition Level Match\nlibrary.keys — Audition Keys\nlibrary.keyFolder — Folder's Key\nlibrary.tempoFolder — Folder's Tempo\nlibrary.tempoTyped — Typed Tempo\nlibrary.tempoClock — Library Tempo from MIDI Clock\nlibrary.includeSubfolders — Include Subfolders\nlibrary.columnSort — Back to Column Sort\nlibrary.returnRemoved — Return Removed Files to List\nlibrary.play — Play\nlibrary.nextSound — Next Sound\nlibrary.previousSound — Previous Sound\nlibrary.nextKind — Next Kind\nlibrary.previousKind — Previous Kind\nlibrary.openInEditor — Open in Editor\nlibrary.copyAsText — Copy as Text\nlibrary.addToGroup — Add to Group…\nlibrary.removeFromGroup — Remove from Group\nlibrary.smartGroup — Save Filter as Smart Group…\nlibrary.renameFiles — Rename Files…\nlibrary.previousLoop — Previous Multisample Loop\nlibrary.nextLoop — Next Multisample Loop\nlibrary.lockLoop — Lock Multisample Loop\nlibrary.closeMultisample — Close Multisample\nlibrary.undo — Undo (the Library's last change)\nlibrary.redo — Redo",
+      "description": "The Library window's verbs, as the person's own, on the rows given (or selected): split a session, keep takes, stage clean one-shots, mix or append, hide copies, a row's tempo ×2 or ÷2, the audition's switches, the Library tempo and key, and undo. The reply is the band's line after it.\nlibrary.split — Split Session\nlibrary.star — Make This the One\nlibrary.keep — Keep Take\nlibrary.layers — Layers\nlibrary.robins — Robins\nlibrary.like — Sounds Like This\nlibrary.stage — Stage Clean One-Shots\nlibrary.mix — Mix Into One File\nlibrary.append — Append Into One File\nlibrary.removeFromList — Remove from List\nlibrary.moveUp — Move Up in Group\nlibrary.moveDown — Move Down in Group\nlibrary.hideCopies — Hide Copies\nlibrary.trashCopies — Move Copies to Trash\nlibrary.tempoDouble — Tempo ×2\nlibrary.tempoHalve — Tempo ÷2\nlibrary.showDuplicates — Show Duplicates\nlibrary.hearStaged — Hear Staged Result\nlibrary.flip — Flip Source and Result\nlibrary.clearStage — Clear Stage\nlibrary.editStaged — Edit Staged Recipe…\nlibrary.keepInHistory — Keep in History\nlibrary.stopRun — Stop Run\nlibrary.autoplay — Audition Autoplay\nlibrary.continue — Audition Continue\nlibrary.repeat — Audition Repeat\nlibrary.reverse — Audition Reverse\nlibrary.marker — Audition from Marker\nlibrary.lock — Audition Tempo Lock\nlibrary.keySync — Audition Key Sync\nlibrary.keyUp — Library Key Up\nlibrary.keyDown — Library Key Down\nlibrary.tempoUp — Library Tempo Up\nlibrary.tempoDown — Library Tempo Down\nlibrary.libraryTempoDouble — Library Tempo ×2\nlibrary.libraryTempoHalve — Library Tempo ÷2\nlibrary.tempoFromSelection — Library Tempo from Selection\nlibrary.level — Audition Level Match\nlibrary.keys — Audition Keys\nlibrary.keyFolder — Folder's Key\nlibrary.tempoFolder — Folder's Tempo\nlibrary.tempoTyped — Typed Tempo\nlibrary.tempoClock — Library Tempo from MIDI Clock\nlibrary.includeSubfolders — Include Subfolders\nlibrary.addFolder — Add Folder to List…\nlibrary.removeFolder — Remove Folder from List\nlibrary.folderColumns — Show Folder Columns\nlibrary.columnSort — Back to Column Sort\nlibrary.returnRemoved — Return Removed Files to List\nlibrary.play — Play\nlibrary.nextSound — Next Sound\nlibrary.previousSound — Previous Sound\nlibrary.nextKind — Next Kind\nlibrary.previousKind — Previous Kind\nlibrary.openInEditor — Open in Editor\nlibrary.copyAsText — Copy as Text\nlibrary.addToGroup — Add to Group…\nlibrary.removeFromGroup — Remove from Group\nlibrary.smartGroup — Save Filter as Smart Group…\nlibrary.renameFiles — Rename Files…\nlibrary.previousLoop — Previous Multisample Loop\nlibrary.nextLoop — Next Multisample Loop\nlibrary.lockLoop — Lock Multisample Loop\nlibrary.closeMultisample — Close Multisample\nlibrary.undo — Undo (the Library's last change)\nlibrary.redo — Redo",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {
@@ -1282,6 +1313,7 @@
               "library.moveUp",
               "library.moveDown",
               "library.hideCopies",
+              "library.trashCopies",
               "library.tempoDouble",
               "library.tempoHalve",
               "library.showDuplicates",
@@ -1312,6 +1344,9 @@
               "library.tempoTyped",
               "library.tempoClock",
               "library.includeSubfolders",
+              "library.addFolder",
+              "library.removeFolder",
+              "library.folderColumns",
               "library.columnSort",
               "library.returnRemoved",
               "library.play",
